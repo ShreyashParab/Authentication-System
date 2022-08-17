@@ -56,19 +56,27 @@ function signup(){
         password
     }
     dbUsers.push(userDetails)
-    console.log(dbUsers)
+    document.getElementById('alert-success-signup-msg').style.display = 'block'
     resetSignupFields()
 }
 
 function login(){
     let loginEmail  = document.getElementById('loginEmail').value
     let loginPassword = document.getElementById('loginPassword').value
-    let authenticateUser = dbUsers.find(function(element){
-        if(element.email === loginEmail && element.password === loginPassword)
-        return element
+    let authenticateUser = dbUsers.find(function(user){
+        if(user.email === loginEmail && user.password === loginPassword)
+        return user
     })
-    console.log(authenticateUser)
-    
+    if(authenticateUser){
+        // console.log('Access granted!')
+        document.getElementById('alert-success-login-msg').style.display = 'block'
+        document.getElementById('alert-failure-login-msg').style.display = 'none'
+    }
+    else{
+        // console.log('Access denied!')
+        document.getElementById('alert-success-login-msg').style.display = 'none'
+        document.getElementById('alert-failure-login-msg').style.display = 'block'
+    }
     resetLoginFields()
 }   
 
