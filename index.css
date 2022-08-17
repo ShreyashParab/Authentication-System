@@ -43,6 +43,12 @@ form input:focus{
     border: 0.5px solid rgb(42, 41, 41) !important;
 }
 
+.btn{
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: black;
+}
+
 .jumbotron{
     position: absolute;
    top: 50%;
