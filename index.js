@@ -39,9 +39,33 @@ function resetLoginFields(){
     document.getElementById('loginPassword').value = ''
 }
 
+let encryptionRule = {
+    'A': 'N', 'B': 'O', 'C': 'P', 'D': 'Q',
+    'E': 'R', 'F': 'S', 'G': 'T', 'H': 'U',
+    'I': 'V', 'J': 'W', 'K': 'X', 'L': 'Y',
+    'M': 'Z', 'N': 'A', 'O': 'B', 'P': 'C',
+    'Q': 'D', 'R': 'E', 'S': 'F', 'T': 'G',
+    'U': 'H', 'V': 'I', 'W': 'J', 'X': 'K',
+    'Y': 'L', 'Z': 'M',
+    'a': 'n', 'b': 'o', 'c': 'p', 'd': 'q',
+    'e': 'r', 'f': 's', 'g': 't', 'h': 'u',
+    'i': 'v', 'j': 'w', 'k': 'x', 'l': 'y',
+    'm': 'z', 'n': 'a', 'o': 'b', 'p': 'c',
+    'q': 'd', 'r': 'e', 's': 'f', 't': 'g',
+    'u': 'h', 'v': 'i', 'w': 'j', 'x': 'k',
+    'y': 'l', 'z': 'm',
+    '0': '5', '1': '6', '2': '7', '3': '8',
+    '4': '9', '5': '0', '6': '1', '7': '2',
+    '8': '3', '9': '4',
+    '!': '#', '$': '%', '&': '+', '-': '@',
+    '': '~', '#': '!', '%': '$', '+': '&',
+    '@': '-', '~': ''
+  }
+
 const dbUsers = []
 
 function signup(){
+    document.getElementById('alert-success-signup-msg').style.display = 'none'
     let firstName = document.getElementById('firstName').value
     let lastName = document.getElementById('lastName').value
     let email = document.getElementById('email').value
@@ -58,8 +82,9 @@ function signup(){
     dbUsers.push(userDetails)
     document.getElementById('alert-success-signup-msg').style.display = 'block'
     resetSignupFields()
+    // return
 }
-
+    
 function login(){
     let loginEmail  = document.getElementById('loginEmail').value
     let loginPassword = document.getElementById('loginPassword').value
