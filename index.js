@@ -39,6 +39,7 @@ function resetLoginFields(){
     document.getElementById('loginPassword').value = ''
 }
 
+
 let encryptionRule = {
     'A': 'N', 'B': 'O', 'C': 'P', 'D': 'Q',
     'E': 'R', 'F': 'S', 'G': 'T', 'H': 'U',
@@ -62,10 +63,32 @@ let encryptionRule = {
     '@': '-', '~': ''
   }
 
+  const encrypt = (password)=>{
+    let encryptPassword = ''
+    for (const letter of password) {
+        encryptPassword = encryptPassword + encryptionRule[letter]
+    }
+    return encryptPassword
+  }
+
+// shreyash :  fuerlnfu
+  const decrypt = (encryptPassword)=>{
+    let decryptPassword = ''
+    // let keys = Object.keys(encryptionRule)
+    // let values = Object.values(encryptionRule)
+    for (const letter of encryptPassword) {
+        decryptPassword = decryptPassword + encryptionRule[letter]
+    }
+    return decryptPassword
+  }
+
+//   console.log(decrypt('fngln'))
+
+
 const dbUsers = []
 
 function signup(){
-    document.getElementById('alert-success-signup-msg').style.display = 'none'
+    // document.getElementById('alert-success-signup-msg').style.display = 'none'
     let firstName = document.getElementById('firstName').value
     let lastName = document.getElementById('lastName').value
     let email = document.getElementById('email').value
@@ -77,11 +100,18 @@ function signup(){
         lastName,
         email,
         phoneNumber,
-        password
+        password:encrypt(password)
     }
     dbUsers.push(userDetails)
-    document.getElementById('alert-success-signup-msg').style.display = 'block'
+    console.log(dbUsers)
     resetSignupFields()
+    Swal.fire({
+        icon: 'success',
+        title: 'Good job!',
+        text: 'You signed up succesfully',
+        width:400,
+        timer:2000
+      })
     // return
 }
     
@@ -89,18 +119,26 @@ function login(){
     let loginEmail  = document.getElementById('loginEmail').value
     let loginPassword = document.getElementById('loginPassword').value
     let authenticateUser = dbUsers.find(function(user){
-        if(user.email === loginEmail && user.password === loginPassword)
+        if(user.email === loginEmail && decrypt(user.password) === loginPassword)
         return user
     })
     if(authenticateUser){
-        // console.log('Access granted!')
-        document.getElementById('alert-success-login-msg').style.display = 'block'
-        document.getElementById('alert-failure-login-msg').style.display = 'none'
+        Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'You logged in succesfully',
+            width:400,
+            timer:2000
+          })
     }
     else{
-        // console.log('Access denied!')
-        document.getElementById('alert-success-login-msg').style.display = 'none'
-        document.getElementById('alert-failure-login-msg').style.display = 'block'
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops..!',
+            text: 'Please enter valid details!',
+            width:400,
+            timer:2000
+          })
     }
     resetLoginFields()
 }   

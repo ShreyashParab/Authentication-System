@@ -67,6 +67,10 @@ form input:focus{
     /* display: block; */
 }
 
+.log-in .form-text{
+    color: rgb(193, 193, 193);
+}
+
 .log-in{
     display: none;
     /* display: block; */
@@ -76,11 +80,11 @@ a:link{
     text-decoration: none;
 }
 
-.alert-success-signup-msg , .alert-failure-signup-msg , .alert-success-login-msg , .alert-failure-login-msg{
-   position: absolute;
-   top: 10%;
+/* .alert-success-signup-msg , .alert-failure-signup-msg , .alert-success-login-msg , .alert-failure-login-msg{
+   position: fixed;
+   top: 12%;
    right: 1%;
-   width: 30%;
+   width: 50%;
    display: none;
 }
 
@@ -88,4 +92,4 @@ a:link{
 .alert-success-signup-msg button:focus , .alert-failure-signup-msg button:focus , .alert-success-login-msg button:focus , .alert-failure-login-msg button:focus{
     box-shadow: none !important;
     outline: none !important;
-}
+} */
