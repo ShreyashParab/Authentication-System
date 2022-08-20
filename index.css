@@ -80,16 +80,14 @@ a:link{
     text-decoration: none;
 }
 
-/* .alert-success-signup-msg , .alert-failure-signup-msg , .alert-success-login-msg , .alert-failure-login-msg{
-   position: fixed;
-   top: 12%;
-   right: 1%;
-   width: 50%;
-   display: none;
+.password-icon{
+    display: inline-block;
 }
 
-
-.alert-success-signup-msg button:focus , .alert-failure-signup-msg button:focus , .alert-success-login-msg button:focus , .alert-failure-login-msg button:focus{
-    box-shadow: none !important;
-    outline: none !important;
-} */
+.userName{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: xx-large;
+}

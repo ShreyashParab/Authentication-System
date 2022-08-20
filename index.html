@@ -14,32 +14,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-      <!-- ----------------------------------------------- Alerts -------------------------------------->
-      
-      <!-- <div class="alert-success-signup-msg" id="alert-success-signup-msg">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <i class="fa fa-check-circle" aria-hidden="true"></i> <strong>Congratulations..!</strong> , You Signed up Successfully :)
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="alert-failure-signup-msg" id="alert-failure-signup-msg">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <i class="fa fa-exclamation-circle" aria-hidden="true"></i> <strong>Oops..!</strong> , Your Signed up failed :(
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="alert-success-login-msg" id="alert-success-login-msg">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <i class="fa fa-check-circle" aria-hidden="true"></i> <strong>Congratulations..!</strong> , You logged in Successfully :)
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="alert-failure-login-msg" id="alert-failure-login-msg">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <i class="fa fa-exclamation-circle" aria-hidden="true"></i> <strong>Oops..! login failed </strong> , please enter valid details  :(
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      </div> -->
+    
       <!--------------------------------------------------Navbar---------------------------------------->
 
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
@@ -74,6 +49,9 @@
         </div>
       </nav>
 
+      <!-- welcome -->
+      <div class="userName" id="userName"></div>
+
       <!-------------------------------------------Jumbotron ----------------------------------------------->
       
       <div class="jumbotron-display" id="jumbotron-display">
@@ -85,7 +63,7 @@
         </div>
       </div>  
 
-      <!------------------------------------------------ Sign Up Form----------------------------------------------------------------->
+      <!------------------------------------Sign UpForm-------------------------------------------------------------->
       
       <div class="container sign-up" id="sign-up">
         <div class="inner-div">
@@ -94,15 +72,21 @@
             <div>
               <label for="firstName" class="form-label">First name</label>
               <input type="text" class="form-control" id="firstName" required autocomplete="off">
-              <div class="valid-feedback">
-                Looks good!
+              <div class="valid-feedback" id="firstname-valid">
+                <i class="fa-solid fa-circle-check"></i> Looks good!
+              </div>
+              <div class="invalid-feedback" id="firstname-invalid">
+                <i class="fa-solid fa-circle-exclamation" title="Don't enter empty name can upto have only 20 characters" style="color:rgb(173, 4, 4);"></i> please enter valid name!
               </div>
             </div>
             <div class="my-2">
               <label for="lastName" class="form-label">Last name</label>
               <input type="text" class="form-control" id="lastName" required autocomplete="off">
-              <div class="valid-feedback">
-                Looks good!
+              <div class="valid-feedback" id="lastname-valid">
+                <i class="fa-solid fa-circle-check"></i> Looks good!
+              </div>
+              <div class="invalid-feedback" id="lastname-invalid">
+                <i class="fa-solid fa-circle-exclamation" title="Don't enter empty name can only upto have 20 character" style="color:rgb(173, 4, 4);"></i> please enter a valid name!
               </div>
             </div>
             <div class="my-2">
@@ -110,8 +94,11 @@
               <div class="input-group">
                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                 <input type="email" class="form-control" id="email" required autocomplete="off">
-                <div class="invalid-feedback">
-                  Please enter a valid email..!
+                <div class="valid-feedback" id="email-valid">
+                  <i class="fa-solid fa-circle-check"></i> Looks good!
+                </div>
+                <div class="invalid-feedback" id="email-invalid">
+                  <i class="fa-solid fa-circle-exclamation" title="Don't enter empty email and email should end with domain like @gmail.com" style="color:rgb(173, 4, 4);"></i> Please enter a valid email id..!
                 </div>
               </div>
             </div>
@@ -120,38 +107,53 @@
               <div class="input-group">
                 <span class="input-group-text" id="inputGroupPrepend">+91</span>
                 <input type="number" class="form-control" id="phoneNumber" aria-describedby="inputGroupPrepend" required autocomplete="off">
-                <div class="invalid-feedback">
-                  Please enter valid number.
+                <div class="valid-feedback" id="phone-valid">
+                  <i class="fa-solid fa-circle-check"></i> Looks good!
+                </div>
+                <div class="invalid-feedback" id="phone-invalid">
+                  <i class="fa-solid fa-circle-exclamation" title="Number should have 10 digits" style="color:rgb(173, 4, 4);"></i> Please enter valid number.
                 </div>
               </div>
             </div>
             <div class="my-2">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" required autocomplete="off">
-              <div class="invalid-feedback">
-                Please enter valid password.
+                <input type="password" class="form-control" id="password" required autocomplete="off">
+                <p>
+                  <input type="checkbox"  id="passwordSee1" onclick="passwordVisibility1()"> Show Password
+                </p>  
+                <div class="valid-feedback" id="password-valid">
+                <i class="fa-solid fa-circle-check"></i> Looks good!
+              </div>
+              <div class="invalid-feedback" id="password-invalid">
+                <i class="fa-solid fa-circle-exclamation" title="password should have at least 8 character, must contain at least 1 capital case letter , 1 symbol and 1 digit to have strong password" style="color:rgb(173, 4, 4);"></i> Please enter valid password.
               </div>
             </div>
             <div class="my-2">
               <label for="confirmPassword" class="form-label">Confirm password</label>
               <input type="password" class="form-control" id="confirmPassword" required autocomplete="off">
-              <div class="invalid-feedback">
-                Password doesn't match..!
+              <p>
+                <input type="checkbox"  id="passwordSee2" onclick="passwordVisibility2()"> Show Password
+              </p>
+              <div class="valid-feedback" id="confirm-password-valid">
+                <i class="fa-solid fa-circle-check"></i> Password matched!
+              </div>
+              <div class="invalid-feedback" id="confirm-password-invalid">
+                <i class="fa-solid fa-circle-exclamation" title="Password must match.." style="color:rgb(173, 4, 4);"></i> Password doesn't match..!
               </div>
             </div>
             <div class="my-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required autocomplete="off">
+                <input class="form-check-input" type="checkbox" value="" id="tnC" required autocomplete="off">
                 <label class="form-check-label" for="invalidCheck">
                   Agree to terms and conditions
                 </label>
-                <div class="invalid-feedback">
-                  You must agree before submitting.
+                <div class="invalid-feedback" id="tnC-invalid">
+                  <i class="fa-solid fa-circle-exclamation" title="dont enter empty name" style="color:rgb(173, 4, 4);"></i> You must agree before submitting.
                 </div>
               </div>
             </div>
             <div>
-              <button class="btn btn-dark" id="signUpBtn" type="button" onclick="signup()">Sign up</button>
+              <button class="btn btn-dark" id="signUpBtn" type="button" onclick="validateSignup()">Sign up</button>
             </div>
           </form>
         </div>
@@ -167,17 +169,35 @@
             <label for="loginEmail" class="form-label">Email address</label>
             <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" autocomplete="off">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div class="valid-feedback" id="email-login-valid">
+              <i class="fa-solid fa-circle-check"></i> Looks good!
+            </div>
+            <div class="invalid-feedback" id="email-login-invalid">
+              <i class="fa-solid fa-circle-exclamation" title="Don't enter empty email and email should end with domain like @gmail.com" style="color:rgb(173, 4, 4);"></i> Please enter a valid email id..!
+            </div>
           </div>
           <div class="mb-3">
             <label for="loginPassword" class="form-label">Password</label>
             <input type="password" class="form-control" id="loginPassword" autocomplete="off">
+            <p>
+              <input type="checkbox"  id="passwordSee3" onclick="passwordVisibility3()"> Show Password
+            </p>
+          </div>
+          <div class="valid-feedback" id="password-login-valid">
+            <i class="fa-solid fa-circle-check"></i> Looks good!
+          </div>
+          <div class="invalid-feedback" id="password-login-invalid">
+            <i class="fa-solid fa-circle-exclamation" title="password should have at least 8 character, must contain at least 1 capital case letter , 1 symbol and 1 digit to have strong password" style="color:rgb(173, 4, 4);"></i> Please enter valid password.
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input type="checkbox" class="form-check-input" id="tnC-login">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="invalid-feedback" id="tnC-login-invalid">
+              <i class="fa-solid fa-circle-exclamation" title="dont enter empty name" style="color:rgb(173, 4, 4);"></i> You must agree before submitting.
+            </div>
           </div>
           <div>
-            <button type="button" class="btn btn-dark" onclick="login()">Login</button>
+            <button type="button" class="btn btn-dark" onclick="validateLogin()">Login</button>
           </div>
           
           </form>
