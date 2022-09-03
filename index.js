@@ -7,7 +7,7 @@ function homePage(){
     document.getElementById('home-btn').classList.add('active')
     document.getElementById('login-btn').classList.remove('active')
     document.getElementById('signup-btn').classList.remove('active')
-    document.getElementById('userName').style.display = 'none'
+//     document.getElementById('userName').style.display = 'none'
 }
 
 function signUpPage(){
