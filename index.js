@@ -7,6 +7,7 @@ function homePage(){
     document.getElementById('home-btn').classList.add('active')
     document.getElementById('login-btn').classList.remove('active')
     document.getElementById('signup-btn').classList.remove('active')
+    document.getElementById('userName').style.display = 'none'
 }
 
 function signUpPage(){
@@ -16,6 +17,7 @@ function signUpPage(){
     document.getElementById('signup-btn').classList.add('active')
     document.getElementById('login-btn').classList.remove('active')
     document.getElementById('home-btn').classList.remove('active')
+    document.getElementById('userName').style.display = 'none'
 }
 
 function loginPage(){
@@ -25,6 +27,7 @@ function loginPage(){
     document.getElementById('login-btn').classList.add('active')
     document.getElementById('signup-btn').classList.remove('active')
     document.getElementById('home-btn').classList.remove('active')
+    document.getElementById('userName').style.display = 'none'
 }
 
 
